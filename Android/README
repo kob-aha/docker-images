@@ -1,0 +1,20 @@
+Overview:
+---------
+
+	Docker image which sets up a container with Android Studio and load 4.4.2 API to the SDK
+
+Build image: 
+------------
+
+	docker build -t 'kobaha/android-studio:0.8.6' .
+
+Run container: 
+--------------
+
+	docker run -t -i --name 'android-dev-container' -d -P kobaha/android-studio:0.8.6
+
+Connect to SSH port:
+--------------------
+
+	SSH_PORT=`docker port android-dev-container 22 | cut -f2 -d :`	
+	ssh -X android@localhost -p $SSH_PORT -i ~/Incubator/Android/ssh/id_rsa
